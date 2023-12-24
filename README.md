@@ -1,4 +1,4 @@
-# Resonite-yt-dlp-Updater
+# yt-dlp-Updater
  
 A [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader) mod for [Resonite](https://resonite.com/) that runs the built in update function for yt-dlp on startup.
 
