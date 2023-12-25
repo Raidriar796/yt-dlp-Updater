@@ -1,10 +1,11 @@
 # yt-dlp Updater
  
-A [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader) mod for [Resonite](https://resonite.com/) that runs the built in update function for yt-dlp on startup.
+A [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader) mod for [Resonite](https://resonite.com/) that runs the built in update function for yt-dlp on startup, includes option to change the update branch.
 
 
 ## Requirements
 - [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader)
+- [Python 3.8+](https://www.python.org/downloads/)
 
 ## Installation
 1. Install [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader).
