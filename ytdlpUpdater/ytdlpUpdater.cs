@@ -1,4 +1,5 @@
-﻿using ResoniteModLoader;
+﻿using FrooxEngine;
+using ResoniteModLoader;
 using System.Diagnostics;
 
 namespace ytdlpUpdater;
@@ -7,7 +8,7 @@ public class ytdlpUpdater : ResoniteMod
 {
     public override string Name => "yt-dlp Updater";
     public override string Author => "Raidriar796";
-    public override string Version => "1.1.0";
+    public override string Version => "1.2.0";
     public override string Link => "https://github.com/Raidriar796/yt-dlp-Updater";
 
     public static ModConfiguration Config;
@@ -23,12 +24,21 @@ public class ytdlpUpdater : ResoniteMod
         Config = GetConfiguration();
         Config.Save(true);
 
-        //Runs update on startup
-        Update(Config.GetValue(UpdateBranch));
+        if (Engine.Current.Platform == Platform.Windows)
+        {
+            //Runs update on startup
+            Update(Config.GetValue(UpdateBranch));
 
-        //Runs update on config change
-        UpdateBranch.OnChanged += (value) => { Update(Config.GetValue(UpdateBranch)); };
+            //Runs update on config change
+            UpdateBranch.OnChanged += (value) => { Update(Config.GetValue(UpdateBranch)); };
+        }
+        else
+        {
+            Msg("This mod is only supported on Windows/Proton");
+        }
     }
+
+    private static String branchArgs = "";
 
     public enum Branch
     {
@@ -39,35 +49,35 @@ public class ytdlpUpdater : ResoniteMod
 
     private static void Update(Branch SelectedBranch)
     {
-        switch (SelectedBranch)
+        if (File.Exists("RuntimeData/yt-dlp.exe"))
         {
-            case Branch.Stable:
-            Process process1 = new Process();
-            process1.StartInfo.FileName = "RuntimeData/yt-dlp.exe";
-            process1.StartInfo.Arguments = "--update-to stable@latest";
-            process1.Start();
-            break;
+            switch (SelectedBranch)
+            {
+                case Branch.Stable:
+                branchArgs = "--update-to stable@latest";
+                break;
 
-            case Branch.Nightly:
-            Process process2 = new Process();
-            process2.StartInfo.FileName = "RuntimeData/yt-dlp.exe";
-            process2.StartInfo.Arguments = "--update-to nightly@latest";
-            process2.Start();
-            break;
+                case Branch.Nightly:
+                branchArgs = "--update-to nightly@latest";
+                break;
 
-            case Branch.Master:
-            Process process3 = new Process();
-            process3.StartInfo.FileName = "RuntimeData/yt-dlp.exe";
-            process3.StartInfo.Arguments = "--update-to master@latest";
-            process3.Start();
-            break;
+                case Branch.Master:
+                branchArgs = "--update-to master@latest";
+                break;
 
-            default:
-            Process process4 = new Process();
-            process4.StartInfo.FileName = "RuntimeData/yt-dlp.exe";
-            process4.StartInfo.Arguments = "--update-to stable@latest";
-            process4.Start();
-            break;
+                default:
+                branchArgs = "--update-to stable@latest";
+                break;
+            }
+
+            Process updateProcess = new Process();
+            updateProcess.StartInfo.FileName = "RuntimeData/yt-dlp.exe";
+            updateProcess.StartInfo.Arguments = branchArgs;
+            updateProcess.Start();
+        }
+        else
+        {
+            Msg("yt-dlp.exe not found in RuntimeData folder, you may want to validate files or manually redownload yt-dlp");
         }
     }
 }
