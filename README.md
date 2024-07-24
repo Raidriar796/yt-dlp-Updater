@@ -2,7 +2,7 @@
  
 A [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader) mod for [Resonite](https://resonite.com/) that runs the built in update function for yt-dlp on startup, includes option to change the update branch.
 
-**Only Windows and Linux with Proton is supported, Native Linux support is not planned.**
+**Only the Windows graphical cilent is supported, including Wine/Proton.**
 
 ## Requirements
 - [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader) 2.5.0 or later
