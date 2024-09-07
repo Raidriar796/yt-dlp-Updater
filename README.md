@@ -24,3 +24,15 @@ Since the .exe is instantiated, it can be updated during runtime and you can sta
 ## Why does a terminal appear everytime Resonite starts?
 
 yt-dlp has an embedded python runtime which always opens a terminal when called upon through this mod. A modified version of yt-dlp would be needed to not have a terminal open.
+
+## How do I go back to the yt-dlp version released with Resonite?
+
+The mod currently has no mechanism to rollback to the version released with Resonite, as it's periodically updated and I'd rather avoid hard coding a specific version of yt-dlp into the mod. There's 2 ways you can manually downgrade:
+1. Change the "Custom update version" to the specific version that's released with Resonite at the time
+2. Delete the yt-dlp.exe and validate files with Steam.
+
+## Why isn't this part of Resonite?
+
+This mod is updating yt-dlp in a way that likely would not be implemented officially. Beyond just issues with implementation, this also sets up Resonite with an additional update mechanism that's outside of Resonite's control and as such can lead to issues with education/business use cases or introduce unforeseen bugs/breakage.
+
+This mod is intended for people who'd like to have potentially better video compatibility at the risk of introducing new issues.
