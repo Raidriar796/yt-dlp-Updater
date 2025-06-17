@@ -2,6 +2,8 @@
  
 A [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader) mod for [Resonite](https://resonite.com/) that runs the built in update function for yt-dlp on startup, includes option to change the update branch.
 
+This mod is now deprecated as of Resonite version `2025.6.17.623` 
+
 **Only the Windows graphical cilent is supported, including Wine/Proton.**
 
 ## Requirements
@@ -30,9 +32,3 @@ yt-dlp has an embedded python runtime which always opens a terminal when called 
 The mod currently has no mechanism to rollback to the version released with Resonite, as it's periodically updated and I'd rather avoid hard coding a specific version of yt-dlp into the mod. There's 2 ways you can manually downgrade:
 1. Change the "Custom update version" to the specific version that's released with Resonite at the time
 2. Delete the yt-dlp.exe and validate files with Steam.
-
-## Why isn't this part of Resonite?
-
-This mod is updating yt-dlp in a way that likely would not be implemented officially. Beyond just issues with implementation, this also sets up Resonite with an additional update mechanism that's outside of Resonite's control and as such can lead to issues with education/business use cases or introduce unforeseen bugs/breakage.
-
-This mod is intended for people who'd like to have potentially better video compatibility at the risk of introducing new issues.
